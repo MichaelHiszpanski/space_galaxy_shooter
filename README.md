@@ -1,3 +1,3 @@
 # space_galaxy_shooter
 
-A new Flutter project.
+Fluuter game project for Mobile and Clouds module - The Opne Univeristy
