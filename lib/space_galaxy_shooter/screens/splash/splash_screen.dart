@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/components/ui/custom_floating_button/custom_floating_button.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/login/login_screen.dart';
 
@@ -40,22 +41,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 height: 500.0,
               ),
               if (isLoginViewVisible)
-                FloatingActionButton.extended(
-                  onPressed: () => _navigateToPlayGame(context),
-                  label: Container(
-                    alignment: Alignment.center,
-                    height: 300.0,
-                    width: 300.0,
-                    child: const Text(
-                      "Login",
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100.0)),
-                  elevation: 10.0,
-                ),
+                CustomFloatingButton(
+                    onPressed: () => _navigateToLoginScreen(context),
+                    buttonName: "Continue")
             ],
           ),
         )
@@ -63,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
     ));
   }
 
-  void _navigateToPlayGame(BuildContext context) {
+  void _navigateToLoginScreen(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => LoginScreen()),

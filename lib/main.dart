@@ -17,7 +17,9 @@ class MainApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         '/space_galaxy_shooter/screens/login/login_screen': (context) =>
-            const LoginScreen()
+            const LoginScreen(),
+        '/space_galaxy_shooter/screens/game_play/game_play_screen': (context) =>
+            GamePlayScreen()
       },
     );
   }
