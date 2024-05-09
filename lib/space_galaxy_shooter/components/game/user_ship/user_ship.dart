@@ -11,18 +11,19 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
     with HasGameRef<GameMain>, CollisionCallbacks {
   UserShip();
   final userMovementsEffect = [];
+  int score = 0;
   @override
   FutureOr<void> onLoad() async {
-    final user_ship = await gameRef.loadSprite("ship.png");
+    final userShip = await gameRef.loadSprite("ship.png");
     size = Vector2(50, 40);
     position = Vector2(350, 600);
     current = UserShipMovement.stop;
     sprites = {
-      UserShipMovement.stop: user_ship,
-      UserShipMovement.up: user_ship,
-      UserShipMovement.down: user_ship,
-      UserShipMovement.left: user_ship,
-      UserShipMovement.right: user_ship
+      UserShipMovement.stop: userShip,
+      UserShipMovement.up: userShip,
+      UserShipMovement.down: userShip,
+      UserShipMovement.left: userShip,
+      UserShipMovement.right: userShip
     };
     add(CircleHitbox());
   }
@@ -75,16 +76,19 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
   }
 
   void gameOver() {
-    //gameRef.overlays.add("gameOver");
+    gameRef.overlays.add("gameOver");
     gameRef.pauseEngine();
+  }
+
+  void reset() {
+    gameRef.resumeEngine();
+    score = 0;
   }
 
   @override
   void update(double dt) {
     if (userMovementsEffect.isNotEmpty) {
-      //&& children.query<Effect>().isEmpty
       add(userMovementsEffect.removeAt(0));
     }
-    // score = PlayGameOne.remaningTime;
   }
 }

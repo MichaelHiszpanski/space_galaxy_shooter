@@ -2,6 +2,7 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_main/game_main.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/game_over/game_over_screen.dart';
 
 class GamePlayScreen extends StatelessWidget {
   final GameMain game;
@@ -15,7 +16,16 @@ class GamePlayScreen extends StatelessWidget {
       body: Container(
         width: Config.gameScreenSize,
         height: Config.gameScreenSize,
-        child: GameWidget(game: game),
+        child: GameWidget(
+          game: game,
+          overlayBuilderMap: {
+            // 'mainMenu': (context, _) => MainMenuScreen(game: game),
+            'gameOver': (context, _) => GameOverScreen(
+                  game: game,
+                  scoreEndGame: game.score.text.toString(),
+                )
+          },
+        ),
       ),
     );
   }

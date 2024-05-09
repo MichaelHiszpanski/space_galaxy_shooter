@@ -1,20 +1,33 @@
 import 'dart:async';
-
+import 'package:flutter/material.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game/background/background_game.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game/user_ship/user_ship.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game_groups/group_rock_type_one/group_rock_type_one.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
 
 class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
   GameMain();
   late UserShip userShip;
+  late TextComponent score;
+  static int remaningTime = 1000;
+  Timer interval = Timer(Config.rockInterval, repeat: true);
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
-
-    addAll([BackgroundGame(), userShip = UserShip(), GroupRockTypeOne()]);
+    if (remaningTime == 1000) {
+      score = TextComponent(text: "Score: 0");
+    }
+    addAll([
+      BackgroundGame(),
+      userShip = UserShip(),
+      GroupRockTypeOne(),
+      score = buildScore(score.text.toString()),
+    ]);
+    debugMode = true;
+    interval.onTick = () => add(GroupRockTypeOne());
   }
 
   @override
@@ -37,6 +50,39 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
     } else if ((tapX > screenWidth / 2) && (tapY < screenHeight / 2)) {
       userShip.moveDown();
       userShip.shoot();
+    }
+  }
+
+  TextComponent buildScore(String score) {
+    return TextComponent(
+        text: score,
+        position: Vector2(size.x / 2, size.y / 2 * 0.2),
+        anchor: Anchor.center,
+        textRenderer: TextPaint(
+            style: const TextStyle(
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)));
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    interval.update(dt);
+    score.text = "Score: ${remaningTime}";
+    // debugPrint("Step 1");
+    if (remaningTime > 0) {
+      debugPrint("Step 2");
+      // countDownTimer.update(dt);
+      remaningTime -= 1;
+      // score.text = "Score: ${userShip.score}";
+      score.text = "Score: ${remaningTime}";
+    }
+    if (remaningTime <= 0) {
+      debugPrint("Step 3");
+      pauseEngine();
+      remaningTime = 0;
+      overlays.add("gameOver");
     }
   }
 }
