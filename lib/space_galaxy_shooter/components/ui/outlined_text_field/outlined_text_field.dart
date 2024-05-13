@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 class OutlinedTextField extends StatefulWidget {
   final String labelText;
   final String hintText;
+  final TextEditingController inputvalue;
   const OutlinedTextField(
-      {super.key, required this.labelText, required this.hintText});
+      {super.key,
+      required this.labelText,
+      required this.hintText,
+      required this.inputvalue});
 
   @override
   State<OutlinedTextField> createState() => _OutlinedTextFieldState();
@@ -16,6 +20,7 @@ class _OutlinedTextFieldState extends State<OutlinedTextField> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 120.0),
       child: TextField(
+        controller: widget.inputvalue,
         decoration: InputDecoration(
           labelText: widget.labelText,
           labelStyle: const TextStyle(

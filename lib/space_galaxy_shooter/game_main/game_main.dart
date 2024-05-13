@@ -6,14 +6,18 @@ import 'package:flame/game.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game/background/background_game.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game/user_ship/user_ship.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game_groups/group_rock_type_one/group_rock_type_one.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game_groups/group_rock_type_two/group_rock_type_two.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
+import 'dart:math';
 
 class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
   GameMain();
   late UserShip userShip;
   late TextComponent score;
   static int remaningTime = 1000;
-  Timer interval = Timer(Config.rockInterval, repeat: true);
+  final Random random = Random();
+  Timer loopTypeOne = Timer(Config.intervalRockTypeOne, repeat: true);
+  Timer loopTypeTwo = Timer(Config.intervalRockTypeTwo, repeat: true);
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
@@ -24,10 +28,12 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
       BackgroundGame(),
       userShip = UserShip(),
       GroupRockTypeOne(),
+      GroupRockTypeTwo(),
       score = buildScore(score.text.toString()),
     ]);
     debugMode = true;
-    interval.onTick = () => add(GroupRockTypeOne());
+    loopTypeOne.onTick = () => add(GroupRockTypeOne());
+    loopTypeTwo.onTick = () => add(GroupRockTypeTwo());
   }
 
   @override
@@ -68,7 +74,7 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
   @override
   void update(double dt) {
     super.update(dt);
-    interval.update(dt);
+    loopTypeOne.update(dt);
     score.text = "Score: ${remaningTime}";
     // debugPrint("Step 1");
     if (remaningTime > 0) {
