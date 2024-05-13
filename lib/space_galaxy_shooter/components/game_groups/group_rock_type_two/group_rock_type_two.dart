@@ -7,7 +7,6 @@ import 'package:space_galaxy_shooter/space_galaxy_shooter/interfaces/rock_type_t
 
 class GroupRockTypeTwo extends PositionComponent with HasGameRef<GameMain> {
   GroupRockTypeTwo();
-  final _random = Random();
 
   @override
   Future<void> onLoad() async {

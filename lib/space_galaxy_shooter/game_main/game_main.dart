@@ -75,6 +75,7 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
   void update(double dt) {
     super.update(dt);
     loopTypeOne.update(dt);
+    loopTypeTwo.update(dt);
     score.text = "Score: ${remaningTime}";
     // debugPrint("Step 1");
     if (remaningTime > 0) {

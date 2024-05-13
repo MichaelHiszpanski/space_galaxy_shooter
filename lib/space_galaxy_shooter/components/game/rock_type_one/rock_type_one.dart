@@ -15,7 +15,7 @@ class RockTypeOne extends SpriteComponent
       : super();
   @override
   Future<void> onLoad() async {
-    final rock = await Flame.images.load("rock2.png");
+    final rock = await Flame.images.load("rock_type_one.png");
     size = Vector2(wight, height);
 
     position = Vector2(50, 0);
