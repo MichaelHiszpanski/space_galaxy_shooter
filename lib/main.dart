@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_main/game_main.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/game_play/game_play_screen.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/login/login_screen.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/menu/menu_screen.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/splash/splash_screen.dart';
 
 void main() {
@@ -19,7 +20,9 @@ class MainApp extends StatelessWidget {
         '/space_galaxy_shooter/screens/login/login_screen': (context) =>
             const LoginScreen(),
         '/space_galaxy_shooter/screens/game_play/game_play_screen': (context) =>
-            GamePlayScreen()
+            GamePlayScreen(),
+        '/space_galaxy_shooter/screens/menu_screen/menu_screen': (context) =>
+            const MenuScreen(),
       },
     );
   }

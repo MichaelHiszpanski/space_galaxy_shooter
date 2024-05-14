@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/database/mongo_db.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
-import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/login/login_screen.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/menu/menu_screen.dart';
 
 class GameResultsScreen extends StatefulWidget {
   const GameResultsScreen({super.key});
@@ -32,7 +32,6 @@ class _GameResultsState extends State<GameResultsScreen> {
     return SafeArea(
         child: Column(
       children: [
-        // extended used to create custom Floating Action Button
         Container(
           width: Config.gameScreenSize,
           height: Config.gameScreenSize,
@@ -67,7 +66,7 @@ class _GameResultsState extends State<GameResultsScreen> {
   void _navigateToLoginScreen(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LoginScreen()),
+      MaterialPageRoute(builder: (context) => const MenuScreen()),
     );
   }
 }

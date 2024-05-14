@@ -4,6 +4,7 @@ import 'package:space_galaxy_shooter/space_galaxy_shooter/components/ui/outlined
 import 'package:space_galaxy_shooter/space_galaxy_shooter/database/mongo_db.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/game_play/game_play_screen.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/menu/menu_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -91,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void _navigateToPlayGame(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => GamePlayScreen()),
+      MaterialPageRoute(builder: (context) => const MenuScreen()),
     );
   }
 
