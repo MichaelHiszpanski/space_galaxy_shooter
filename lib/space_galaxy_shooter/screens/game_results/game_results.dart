@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/components/ui/custom_floating_button/custom_floating_button.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/database/mongo_db.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/menu/menu_screen.dart';
@@ -27,6 +28,13 @@ class _GameResultsState extends State<GameResultsScreen> {
     _fetchData();
   }
 
+  void _navigateToMenuScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const MenuScreen()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,13 +45,16 @@ class _GameResultsState extends State<GameResultsScreen> {
           height: Config.gameScreenSize,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/images/splash.png"),
+                  image: AssetImage("assets/images/results_screen.png"),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
               const SizedBox(
                 height: 500.0,
               ),
+              CustomFloatingButton(
+                  onPressed: () => _navigateToMenuScreen(context),
+                  buttonName: "Back to Menu"),
               Expanded(
                   child: ListView.builder(
                 itemCount: _users.length,
@@ -61,12 +72,5 @@ class _GameResultsState extends State<GameResultsScreen> {
         )
       ],
     ));
-  }
-
-  void _navigateToLoginScreen(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const MenuScreen()),
-    );
   }
 }
