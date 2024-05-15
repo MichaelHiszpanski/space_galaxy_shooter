@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_main/game_main.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/game_play/game_play_screen.dart';
 
 class GameOverScreen extends StatelessWidget {
   static const String id = "gameOver";
@@ -34,7 +35,7 @@ class GameOverScreen extends StatelessWidget {
                 height: 20,
               ),
               ElevatedButton(
-                onPressed: onRestart,
+                onPressed: () => onRestart(context),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
                 child: const Text(
                   "Restart",
@@ -48,10 +49,14 @@ class GameOverScreen extends StatelessWidget {
     );
   }
 
-  void onRestart() {
-    game.userShip.reset();
-    game.overlays.remove("gameOver");
-    GameMain.remaningTime = 1000;
-    game.resumeEngine();
+  void onRestart(BuildContext context) {
+    // game.userShip.reset();
+    // game.overlays.remove("gameOver");
+    // GameMain.remaningTime = 1000;
+    // game.resumeEngine();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => GamePlayScreen()),
+    );
   }
 }

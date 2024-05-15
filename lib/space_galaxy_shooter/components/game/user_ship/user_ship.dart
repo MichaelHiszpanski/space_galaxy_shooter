@@ -3,6 +3,8 @@ import 'package:flame/effects.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game/rock_type_one/rock_type_one.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game/rock_type_three/rock_type_three.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game/rock_type_two/rock_type_two.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game/user_ship_ammo/user_ship_ammo.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_main/game_main.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/interfaces/user_ship_movement/user_ship_movement.dart';
@@ -11,7 +13,7 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
     with HasGameRef<GameMain>, CollisionCallbacks {
   UserShip();
   final userMovementsEffect = [];
-  int score = 0;
+  // int score = 0;
   @override
   FutureOr<void> onLoad() async {
     final userShip = await gameRef.loadSprite("ship.png");
@@ -73,6 +75,12 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
     if (other is RockTypeOne) {
       gameOver();
     }
+    if (other is RockTypeTwo) {
+      gameOver();
+    }
+    if (other is RockTypeThree) {
+      gameOver();
+    }
   }
 
   void gameOver() {
@@ -82,7 +90,6 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
 
   void reset() {
     gameRef.resumeEngine();
-    score = 0;
   }
 
   @override

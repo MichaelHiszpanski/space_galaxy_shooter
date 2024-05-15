@@ -26,13 +26,11 @@ class RockTypeOne extends SpriteComponent
         sprite = Sprite(rock);
         break;
       case RockTypeOnePosition.right:
-        // position.y = gameRef.size.y - size.y - Config.groundHeight;
         position.y = 80;
         position.x = 580;
         sprite = Sprite(rock);
         break;
       case RockTypeOnePosition.middle:
-        // position.y = gameRef.size.y - size.y - Config.groundHeight;
         position.y = 80;
         position.x = 280;
         sprite = Sprite(rock);
@@ -47,6 +45,7 @@ class RockTypeOne extends SpriteComponent
     if (other is UserShipAmmo) {
       removeFromParent();
       other.removeFromParent();
+      gameRef.updateScore();
     }
   }
 }

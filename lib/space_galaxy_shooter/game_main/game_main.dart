@@ -14,7 +14,8 @@ import 'dart:math';
 class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
   GameMain();
   late UserShip userShip;
-  late TextComponent score;
+  late int score;
+  late TextComponent scoreText;
   static int remaningTime = 1000;
   final Random random = Random();
   Timer loopTypeOne = Timer(Config.intervalRockTypeOne, repeat: true);
@@ -23,16 +24,26 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
-    if (remaningTime == 1000) {
-      score = TextComponent(text: "Score: 0");
-    }
+    score = 0;
+    scoreText = TextComponent(
+      text: "Score: $score",
+      position: Vector2(size.x / 2, size.y * 0.2),
+      anchor: Anchor.center,
+      textRenderer: TextPaint(
+        style: const TextStyle(
+          fontSize: 40,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+    );
     addAll([
       BackgroundGame(),
       userShip = UserShip(),
       GroupRockTypeOne(),
       GroupRockTypeTwo(),
       GroupRockTypeThree(),
-      score = buildScore(score.text.toString()),
+      scoreText,
     ]);
     debugMode = true;
     loopTypeOne.onTick = () => add(GroupRockTypeOne());
@@ -63,16 +74,9 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
     }
   }
 
-  TextComponent buildScore(String score) {
-    return TextComponent(
-        text: score,
-        position: Vector2(size.x / 2, size.y / 2 * 0.2),
-        anchor: Anchor.center,
-        textRenderer: TextPaint(
-            style: const TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-                color: Colors.white)));
+  void updateScore() {
+    score += 1;
+    scoreText.text = "Score: $score";
   }
 
   @override
@@ -81,15 +85,15 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
     loopTypeOne.update(dt);
     loopTypeTwo.update(dt);
     loopTypeThree.update(dt);
-    score.text = "Score: ${remaningTime}";
-    // debugPrint("Step 1");
-    if (remaningTime > 0) {
-      debugPrint("Step 2");
-      // countDownTimer.update(dt);
-      remaningTime -= 1;
-      // score.text = "Score: ${userShip.score}";
-      score.text = "Score: ${remaningTime}";
-    }
+    // score.text = "Score: ${remaningTime}";
+    // // debugPrint("Step 1");
+    // if (remaningTime > 0) {
+    //   debugPrint("Step 2");
+    //   // countDownTimer.update(dt);
+    //   remaningTime -= 1;
+    //   // score.text = "Score: ${userShip.score}";
+    //   score.text = "Score: ${remaningTime}";
+    // }
     if (remaningTime <= 0) {
       debugPrint("Step 3");
       pauseEngine();

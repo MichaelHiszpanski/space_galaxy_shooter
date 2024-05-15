@@ -22,7 +22,7 @@ class GamePlayScreen extends StatelessWidget {
             // 'mainMenu': (context, _) => MainMenuScreen(game: game),
             'gameOver': (context, _) => GameOverScreen(
                   game: game,
-                  scoreEndGame: game.score.text.toString(),
+                  scoreEndGame: game.score.toString(),
                 )
           },
         ),

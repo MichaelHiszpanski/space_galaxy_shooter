@@ -9,6 +9,7 @@ class RockTypeTwo extends SpriteComponent
     with HasGameRef<GameMain>, CollisionCallbacks {
   final double height;
   final double wight;
+  late int rockLife;
   final RockTypeTwoPosition rockPosition;
   RockTypeTwo(
       {required this.height, required this.wight, required this.rockPosition})
@@ -17,7 +18,7 @@ class RockTypeTwo extends SpriteComponent
   Future<void> onLoad() async {
     final rock = await Flame.images.load("rock_type_two.png");
     size = Vector2(wight, height);
-
+    rockLife = 2;
     position = Vector2(50, 0);
     switch (rockPosition) {
       case RockTypeTwoPosition.left:
@@ -38,7 +39,11 @@ class RockTypeTwo extends SpriteComponent
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
     if (other is UserShipAmmo) {
-      removeFromParent();
+      rockLife -= 1;
+      gameRef.updateScore();
+      if (rockLife <= 0) {
+        removeFromParent();
+      }
       other.removeFromParent();
     }
   }
