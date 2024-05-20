@@ -18,7 +18,7 @@ class RockTypeTwo extends SpriteComponent
   Future<void> onLoad() async {
     final rock = await Flame.images.load("rock_type_two.png");
     size = Vector2(wight, height);
-    rockLife = 2;
+    rockLife = 5;
     position = Vector2(50, 0);
     switch (rockPosition) {
       case RockTypeTwoPosition.left:

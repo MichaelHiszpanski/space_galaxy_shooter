@@ -45,7 +45,7 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
   }
 
   void moveDown() {
-    if (position.y < 800 - size.y * 2) {
+    if (position.y < 900 - size.y * 2) {
       userMovementsEffect
           .add(MoveByEffect(Vector2(0, 30), EffectController(duration: 0.1)));
       current = UserShipMovement.down;
@@ -61,7 +61,7 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
   }
 
   void moveRight() {
-    if (position.x < 800 - size.y * 2) {
+    if (position.x < 900 - size.y * 2) {
       userMovementsEffect
           .add(MoveByEffect(Vector2(30, 0), EffectController(duration: 0.1)));
       current = UserShipMovement.right;

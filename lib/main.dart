@@ -6,7 +6,7 @@ import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/login/login_sc
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/menu/menu_screen.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/splash/splash_screen.dart';
 
-final userLoginProvider = StateProvider<dynamic>((ref) => null);
+final userLoginProvider = StateProvider<Map<String, dynamic>?>((ref) => null);
 final allUsersDataProvider = StateProvider<dynamic>((ref) => null);
 void main() {
   runApp(

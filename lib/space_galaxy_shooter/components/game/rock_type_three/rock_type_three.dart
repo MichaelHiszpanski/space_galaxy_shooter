@@ -18,7 +18,7 @@ class RockTypeThree extends SpriteComponent
   Future<void> onLoad() async {
     final rock = await Flame.images.load("rock_type_three.png");
     size = Vector2(wight, height);
-    rockLife = 5;
+    rockLife = 10;
     position = Vector2(50, 0);
     switch (rockPosition) {
       case RockTypeThreePosition.middle:

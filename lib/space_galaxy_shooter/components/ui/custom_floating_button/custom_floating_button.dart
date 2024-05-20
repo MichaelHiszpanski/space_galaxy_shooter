@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 class CustomFloatingButton extends StatefulWidget {
   final String buttonName;
   final VoidCallback onPressed;
+  final String heroTag; // Add a parameter for the hero tag
 
-  const CustomFloatingButton(
-      {Key? key, required this.onPressed, required this.buttonName})
-      : super(key: key);
+  const CustomFloatingButton({
+    Key? key,
+    required this.onPressed,
+    required this.buttonName,
+    required this.heroTag, // Initialize the hero tag
+  }) : super(key: key);
 
   @override
   State<CustomFloatingButton> createState() => _CustomFloatingButtonState();
@@ -16,6 +20,7 @@ class _CustomFloatingButtonState extends State<CustomFloatingButton> {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
+      heroTag: widget.heroTag,
       onPressed: widget.onPressed,
       label: Container(
         alignment: Alignment.center,
