@@ -7,7 +7,7 @@ import 'package:space_galaxy_shooter/space_galaxy_shooter/database/mongo_db.dart
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/game_play/game_play_screen.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/menu/menu_screen.dart';
-import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/user_provider/user_provider.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/user_model/user_model.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});

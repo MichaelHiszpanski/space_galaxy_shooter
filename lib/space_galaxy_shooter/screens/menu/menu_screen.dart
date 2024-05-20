@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:space_galaxy_shooter/main.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/ui/custom_floating_button/custom_floating_button.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
-import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/user_provider/user_provider.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/user_model/user_model.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/game_play/game_play_screen.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/game_results/game_results.dart';
 
