@@ -13,13 +13,14 @@ class GameResultsScreen extends StatefulWidget {
 
 class _GameResultsState extends State<GameResultsScreen> {
   List<dynamic> _users = [];
-  @override
+
   void _fetchData() async {
     var dbService = DatabaseService();
     var fetchedUsers = await dbService.fetchUsers();
     setState(() {
       _users = fetchedUsers;
     });
+    print(" Users: ${fetchedUsers}");
   }
 
   @override
@@ -37,40 +38,68 @@ class _GameResultsState extends State<GameResultsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Column(
-      children: [
-        Container(
-          width: Config.gameScreenSize,
-          height: Config.gameScreenSize,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/results_screen.png"),
-                  fit: BoxFit.cover)),
+    return Scaffold(
+      body: SafeArea(
           child: Column(
-            children: [
-              const SizedBox(
-                height: 500.0,
-              ),
-              CustomFloatingButton(
+        children: [
+          Container(
+            width: Config.gameScreenSize,
+            height: Config.gameScreenSize,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/results_screen.png"),
+                    fit: BoxFit.cover)),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 150.0,
+                ),
+                Expanded(
+                    child: ListView.builder(
+                  itemCount: _users.length,
+                  itemBuilder: (context, index) {
+                    var user = _users[index];
+                    return Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 8.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ListTile(
+                        title: Text(
+                          "User Name: ${user['login']}",
+                          style: const TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                        subtitle: Text(
+                          'Scores: ${user['scores']?.join(", ") ?? "No scores"}',
+                        ),
+                      ),
+                    );
+                  },
+                )),
+                CustomFloatingButton(
                   onPressed: () => _navigateToMenuScreen(context),
-                  buttonName: "Back to Menu"),
-              Expanded(
-                  child: ListView.builder(
-                itemCount: _users.length,
-                itemBuilder: (context, index) {
-                  var user = _users[index];
-                  return ListTile(
-                    title: Text(user['name']),
-                    subtitle: Text(
-                        'Age: ${user['age']} - Profession: ${user['profession']}'),
-                  );
-                },
-              ))
-            ],
-          ),
-        )
-      ],
-    ));
+                  buttonName: "Back to Menu",
+                  heroTag: "tag_game_results",
+                ),
+                const SizedBox(
+                  height: 100.0,
+                ),
+              ],
+            ),
+          )
+        ],
+      )),
+    );
   }
 }

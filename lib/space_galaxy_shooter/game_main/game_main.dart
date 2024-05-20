@@ -59,16 +59,20 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
     final screenWidth = size.x;
     final screenHeight = size.y;
 
-    if ((tapX < screenWidth / 2) && (tapY > screenHeight / 2)) {
+    if ((tapX < screenWidth / 2) &&
+        (tapY < (screenHeight / 2 + 300)) &&
+        (tapY > screenHeight / 2)) {
       userShip.moveLeft();
       userShip.shoot();
-    } else if ((tapX > screenWidth / 2) && (tapY > screenHeight / 2)) {
+    } else if ((tapX > screenWidth / 2) &&
+        (tapY < (screenHeight / 2 + 300)) &&
+        (tapY > screenHeight / 2)) {
       userShip.moveRight();
       userShip.shoot();
-    } else if ((tapX < screenWidth / 2) && (tapY < screenHeight / 2)) {
+    } else if ((tapY < screenHeight / 2)) {
       userShip.moveUp();
       userShip.shoot();
-    } else if ((tapX > screenWidth / 2) && (tapY < screenHeight / 2)) {
+    } else if ((tapY > (screenHeight / 2) + 310)) {
       userShip.moveDown();
       userShip.shoot();
     }
@@ -85,14 +89,8 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
     loopTypeOne.update(dt);
     loopTypeTwo.update(dt);
     loopTypeThree.update(dt);
-    // score.text = "Score: ${remaningTime}";
-    // // debugPrint("Step 1");
     // if (remaningTime > 0) {
-    //   debugPrint("Step 2");
-    //   // countDownTimer.update(dt);
     //   remaningTime -= 1;
-    //   // score.text = "Score: ${userShip.score}";
-    //   score.text = "Score: ${remaningTime}";
     // }
     if (remaningTime <= 0) {
       debugPrint("Step 3");

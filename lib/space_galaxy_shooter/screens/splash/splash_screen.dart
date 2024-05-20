@@ -42,8 +42,10 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               if (isLoginViewVisible)
                 CustomFloatingButton(
-                    onPressed: () => _navigateToLoginScreen(context),
-                    buttonName: "Continue")
+                  onPressed: () => _navigateToLoginScreen(context),
+                  buttonName: "Continue",
+                  heroTag: "tag_spalsh_screen",
+                )
             ],
           ),
         )
