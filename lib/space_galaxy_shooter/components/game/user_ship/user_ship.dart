@@ -40,7 +40,7 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
   void moveUp() {
     if (position.y > 0) {
       userMovementsEffect
-          .add(MoveByEffect(Vector2(0, -20), EffectController(duration: 0.1)));
+          .add(MoveByEffect(Vector2(0, -30), EffectController(duration: 0.1)));
       current = UserShipMovement.up;
     }
   }
@@ -48,7 +48,7 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
   void moveDown() {
     if (position.y < 900 - size.y * 2) {
       userMovementsEffect
-          .add(MoveByEffect(Vector2(0, 20), EffectController(duration: 0.1)));
+          .add(MoveByEffect(Vector2(0, 30), EffectController(duration: 0.1)));
       current = UserShipMovement.down;
     }
   }
@@ -56,7 +56,7 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
   void moveLeft() {
     if (position.x > 0 + size.y * 2) {
       userMovementsEffect
-          .add(MoveByEffect(Vector2(-20, 0), EffectController(duration: 0.1)));
+          .add(MoveByEffect(Vector2(-30, 0), EffectController(duration: 0.1)));
       current = UserShipMovement.left;
     }
   }
@@ -64,7 +64,7 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
   void moveRight() {
     if (position.x < 900 - size.y * 2) {
       userMovementsEffect
-          .add(MoveByEffect(Vector2(20, 0), EffectController(duration: 0.1)));
+          .add(MoveByEffect(Vector2(30, 0), EffectController(duration: 0.1)));
       current = UserShipMovement.right;
     }
   }

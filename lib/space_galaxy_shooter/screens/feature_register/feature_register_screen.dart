@@ -6,40 +6,33 @@ import 'package:space_galaxy_shooter/space_galaxy_shooter/components/ui/outlined
 import 'package:space_galaxy_shooter/space_galaxy_shooter/database/mongo_db.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/game_play/game_play_screen.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/login/login_screen.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/menu/menu_screen.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/user_model/user_model.dart';
 
-class LoginScreen extends ConsumerStatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends ConsumerStatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  ConsumerState<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends ConsumerState<LoginScreen> {
+class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   final TextEditingController _userLogin = TextEditingController();
   final TextEditingController _userPassword = TextEditingController();
 
   void _loginUser() async {
     // _navigateToPlayGame(context);
     var dbService = DatabaseService();
-    Map<String, dynamic> loginResult =
-        await dbService.checkUserLoginAndPassword(
+    Map<String, dynamic> registerResult = await dbService.addNewUser(
       _userLogin.text,
       _userPassword.text,
     );
 
-    if (loginResult['success']) {
-      final user = User(
-        login: loginResult['user']['login'],
-        password: loginResult['user']['password'],
-        scores: List<int>.from(loginResult['user']['scores']),
-      );
-      // ref.read(userLoginProvider.notifier).update((state) => user);
-      ref.read(userLoginProvider.notifier).state = loginResult['user'];
-      _navigateToMenuScreen(context);
+    if (registerResult['success']) {
+      _navigateToLoginScreen(context);
     } else {
-      print('Login failed: ${loginResult['message']}');
+      print('Login failed: ${registerResult['message']}');
     }
   }
 
@@ -64,9 +57,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       height: 200.0,
                     ),
                     const Text(
-                      'Login',
+                      'Register Account',
                       style: TextStyle(
-                          fontSize: 74,
+                          fontSize: 50,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),
@@ -91,8 +84,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ),
                     CustomFloatingButton(
                       onPressed: () => _loginUser(),
-                      buttonName: "Login",
-                      heroTag: "tag_login_screen",
+                      buttonName: "Register",
+                      heroTag: "tag_register_screen",
                     )
                   ],
                 ))
@@ -102,10 +95,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     );
   }
 
-  void _navigateToMenuScreen(BuildContext context) {
+  void _navigateToLoginScreen(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const MenuScreen()),
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
     );
   }
 

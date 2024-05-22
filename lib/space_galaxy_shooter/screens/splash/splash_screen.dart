@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:space_galaxy_shooter/main.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/ui/custom_floating_button/custom_floating_button.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/feature_register/feature_register_screen.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/login/login_screen.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -49,8 +50,17 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                 if (isLoginViewVisible)
                   CustomFloatingButton(
                     onPressed: () => _navigateToLoginScreen(context),
-                    buttonName: "Continue",
-                    heroTag: "tag_spalsh_screen",
+                    buttonName: "Login",
+                    heroTag: "tag_spalsh_screen_login",
+                  ),
+                const SizedBox(
+                  height: 50.0,
+                ),
+                if (isLoginViewVisible)
+                  CustomFloatingButton(
+                    onPressed: () => _navigateToRegisterScreen(context),
+                    buttonName: "Register",
+                    heroTag: "tag_spalsh_screen_register",
                   )
               ],
             ),
@@ -63,7 +73,14 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   void _navigateToLoginScreen(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LoginScreen()),
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
+    );
+  }
+
+  void _navigateToRegisterScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const RegisterScreen()),
     );
   }
 }
