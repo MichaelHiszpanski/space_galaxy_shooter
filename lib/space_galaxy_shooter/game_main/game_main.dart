@@ -40,7 +40,8 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
     );
     addAll([
       BackgroundGame(screenSize),
-      userShip = UserShip(gameWidth: screenSize.width),
+      userShip =
+          UserShip(gameWidth: screenSize.width, gameHeight: screenSize.height),
       GroupRockTypeOne(gameWidth: screenSize.width),
       GroupRockTypeTwo(),
       GroupRockTypeThree(gameWidth: screenSize.width),

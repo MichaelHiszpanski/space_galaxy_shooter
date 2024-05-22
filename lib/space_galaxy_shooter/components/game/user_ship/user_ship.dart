@@ -12,14 +12,14 @@ import 'package:space_galaxy_shooter/space_galaxy_shooter/interfaces/user_ship_m
 class UserShip extends SpriteGroupComponent<UserShipMovement>
     with HasGameRef<GameMain>, CollisionCallbacks {
   final double gameWidth;
-  UserShip({required this.gameWidth});
-  final userMovementsEffect = [];
-  // int score = 0;
+  final double gameHeight;
+  UserShip({required this.gameWidth, required this.gameHeight});
+  final userMovementsEffect = []; // array to collect user move effetc steps
   @override
   FutureOr<void> onLoad() async {
     final userShip = await gameRef.loadSprite("ship.png");
-    size = Vector2(50, 40);
-    position = Vector2(150, 600);
+    size = Vector2(50, 40); //user ship size
+    position = Vector2(150, 600); //starting position
     current = UserShipMovement.stop;
     sprites = {
       UserShipMovement.stop: userShip,
@@ -32,6 +32,7 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
   }
 
   void shoot() {
+    //function to add ammo to game on current user ship position
     final ammo =
         UserShipAmmo(positionAmmo: position + Vector2(size.x / 2, -size.y / 2));
     gameRef.add(ammo);
@@ -46,7 +47,7 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
   }
 
   void moveDown() {
-    if (position.y < 900 - size.y * 2) {
+    if (position.y < gameHeight - size.y * 2) {
       userMovementsEffect
           .add(MoveByEffect(Vector2(0, 30), EffectController(duration: 0.1)));
       current = UserShipMovement.down;
@@ -62,7 +63,7 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
   }
 
   void moveRight() {
-    if (position.x < 900 - size.y * 2) {
+    if (position.x < gameWidth - size.y * 2) {
       userMovementsEffect
           .add(MoveByEffect(Vector2(30, 0), EffectController(duration: 0.1)));
       current = UserShipMovement.right;
