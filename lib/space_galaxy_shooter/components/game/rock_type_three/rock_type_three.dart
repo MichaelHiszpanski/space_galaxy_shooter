@@ -11,8 +11,12 @@ class RockTypeThree extends SpriteComponent
   final double wight;
   late int rockLife;
   final RockTypeThreePosition rockPosition;
+  final double gameWidth;
   RockTypeThree(
-      {required this.height, required this.wight, required this.rockPosition})
+      {required this.height,
+      required this.wight,
+      required this.rockPosition,
+      required this.gameWidth})
       : super();
   @override
   Future<void> onLoad() async {
@@ -22,8 +26,8 @@ class RockTypeThree extends SpriteComponent
     position = Vector2(50, 0);
     switch (rockPosition) {
       case RockTypeThreePosition.middle:
-        position.y = 70;
-        position.x = 400;
+        position.y = 40;
+        position.x = gameWidth / 2;
         sprite = Sprite(rock);
         break;
     }

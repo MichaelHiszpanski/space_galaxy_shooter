@@ -14,9 +14,13 @@ class GroupRockTypeTwo extends PositionComponent with HasGameRef<GameMain> {
 
     addAll([
       RockTypeTwo(
-          height: 100, wight: 100, rockPosition: RockTypeTwoPosition.left),
+          height: Config.rockTypeTwoSize,
+          wight: Config.rockTypeTwoSize,
+          rockPosition: RockTypeTwoPosition.left),
       RockTypeTwo(
-          height: 100, wight: 100, rockPosition: RockTypeTwoPosition.right)
+          height: Config.rockTypeTwoSize,
+          wight: Config.rockTypeTwoSize,
+          rockPosition: RockTypeTwoPosition.right)
     ]);
   }
 

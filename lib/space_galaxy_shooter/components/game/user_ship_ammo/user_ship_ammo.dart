@@ -23,7 +23,7 @@ class UserShipAmmo extends SpriteComponent
   @override
   void update(double dt) {
     super.update(dt);
-    position += Vector2(0, -200) * dt;
+    position += Vector2(0, -150) * dt;
 
     if (position.y + size.y < 0) {
       removeFromParent();

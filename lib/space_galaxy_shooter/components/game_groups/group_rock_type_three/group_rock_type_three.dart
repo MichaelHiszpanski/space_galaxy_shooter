@@ -6,7 +6,8 @@ import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config
 import 'package:space_galaxy_shooter/space_galaxy_shooter/interfaces/rock_type_three_position/rock_type_three_position.dart';
 
 class GroupRockTypeThree extends PositionComponent with HasGameRef<GameMain> {
-  GroupRockTypeThree();
+  final double gameWidth;
+  GroupRockTypeThree({required this.gameWidth});
 
   @override
   Future<void> onLoad() async {
@@ -14,7 +15,10 @@ class GroupRockTypeThree extends PositionComponent with HasGameRef<GameMain> {
 
     addAll([
       RockTypeThree(
-          height: 200, wight: 200, rockPosition: RockTypeThreePosition.middle),
+          height: Config.rockTypeThreeSize,
+          wight: Config.rockTypeThreeSize,
+          rockPosition: RockTypeThreePosition.middle,
+          gameWidth: gameWidth),
     ]);
   }
 

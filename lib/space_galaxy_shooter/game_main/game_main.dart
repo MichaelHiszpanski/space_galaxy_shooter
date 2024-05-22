@@ -40,16 +40,18 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
     );
     addAll([
       BackgroundGame(screenSize),
-      userShip = UserShip(),
-      GroupRockTypeOne(),
+      userShip = UserShip(gameWidth: screenSize.width),
+      GroupRockTypeOne(gameWidth: screenSize.width),
       GroupRockTypeTwo(),
-      GroupRockTypeThree(),
+      GroupRockTypeThree(gameWidth: screenSize.width),
       scoreText,
     ]);
     debugMode = true;
-    loopTypeOne.onTick = () => add(GroupRockTypeOne());
+    loopTypeOne.onTick =
+        () => add(GroupRockTypeOne(gameWidth: screenSize.width));
     loopTypeTwo.onTick = () => add(GroupRockTypeTwo());
-    loopTypeThree.onTick = () => add(GroupRockTypeThree());
+    loopTypeThree.onTick =
+        () => add(GroupRockTypeThree(gameWidth: screenSize.width));
   }
 
   @override
