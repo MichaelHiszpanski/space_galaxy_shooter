@@ -18,7 +18,7 @@ class UserShip extends SpriteGroupComponent<UserShipMovement>
   FutureOr<void> onLoad() async {
     final userShip = await gameRef.loadSprite("ship.png");
     size = Vector2(50, 40);
-    position = Vector2(350, 600);
+    position = Vector2(150, 600);
     current = UserShipMovement.stop;
     sprites = {
       UserShipMovement.stop: userShip,

@@ -45,14 +45,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = ref.watch(mobileScreenSize);
     return Scaffold(
       body: SafeArea(
           child: Center(
         child: Column(
           children: [
             Container(
-                width: Config.gameScreenSize,
-                height: Config.gameScreenSize,
+                width: screenSize.width,
+                height: screenSize.height,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage("assets/images/login.png"),

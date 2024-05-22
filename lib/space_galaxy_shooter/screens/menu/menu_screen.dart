@@ -33,57 +33,52 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(userLoginProvider) ?? {};
-    print("Use Data MENU ${user}");
+    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
           child: Center(
-        child: Column(
-          children: [
-            Container(
-                width: Config.gameScreenSize,
-                height: Config.gameScreenSize,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/menu_screen.png"),
-                        fit: BoxFit.cover)),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 160.0,
-                    ),
-                    Text(
-                      'Hello, let`s play: ${user['login'] ?? "Guest"}',
-                      style: const TextStyle(
-                          fontSize: 60,
-                          color: Color.fromARGB(255, 182, 38, 13),
-                          fontWeight: FontWeight.w600),
-                    ),
-                    // Text(
-                    //   'Scores: ${user['scores']?.join(", ") ?? "No scores"}',
-                    //   style: const TextStyle(
-                    //     fontSize: 32,
-                    //     color: Color.fromARGB(255, 226, 68, 19),
-                    //   ),
-                    // ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    CustomFloatingButton(
-                      onPressed: () => _navigateToPlayGame(context),
-                      buttonName: 'Start Game',
-                      heroTag: "tag_game_menu_start",
-                    ),
-                    const SizedBox(
-                      height: 400.0,
-                    ),
-                    CustomFloatingButton(
-                      onPressed: () => _navigateToResultsScreen(context),
-                      buttonName: 'Results',
-                      heroTag: "tag_game_menu_results",
-                    )
-                  ],
-                ))
-          ],
+        child: Expanded(
+          child: Column(
+            children: [
+              Container(
+                  width: screenSize.width,
+                  height: screenSize.height,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/menu_screen.png"),
+                          fit: BoxFit.cover)),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 60.0,
+                      ),
+                      Text(
+                        'Hello, let`s play: ${user['login'] ?? "Guest"}',
+                        style: const TextStyle(
+                            fontSize: 25,
+                            color: Color.fromARGB(255, 182, 38, 13),
+                            fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      CustomFloatingButton(
+                        onPressed: () => _navigateToPlayGame(context),
+                        buttonName: 'Start Game',
+                        heroTag: "tag_game_menu_start",
+                      ),
+                      const SizedBox(
+                        height: 100.0,
+                      ),
+                      CustomFloatingButton(
+                        onPressed: () => _navigateToResultsScreen(context),
+                        buttonName: 'Results',
+                        heroTag: "tag_game_menu_results",
+                      )
+                    ],
+                  ))
+            ],
+          ),
         ),
       )),
     );

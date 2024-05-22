@@ -12,7 +12,8 @@ import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config
 import 'dart:math';
 
 class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
-  GameMain();
+  final Size screenSize;
+  GameMain({required this.screenSize});
   late UserShip userShip;
   late int score;
   late TextComponent scoreText;
@@ -38,7 +39,7 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
       ),
     );
     addAll([
-      BackgroundGame(),
+      BackgroundGame(screenSize),
       userShip = UserShip(),
       GroupRockTypeOne(),
       GroupRockTypeTwo(),

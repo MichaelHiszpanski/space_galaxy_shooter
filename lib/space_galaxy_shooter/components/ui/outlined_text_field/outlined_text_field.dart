@@ -17,25 +17,22 @@ class OutlinedTextField extends StatefulWidget {
 class _OutlinedTextFieldState extends State<OutlinedTextField> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 120.0),
-      child: TextField(
-        controller: widget.inputvalue,
-        decoration: InputDecoration(
-          labelText: widget.labelText,
-          labelStyle: const TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 32, 2, 2)),
-          // focusColor: Colors.white,
-          hintText: widget.hintText,
-          filled: true,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: const BorderSide(color: Color.fromARGB(255, 7, 1, 0)),
-          ),
-          fillColor: Colors.white,
+    return TextField(
+      controller: widget.inputvalue,
+      decoration: InputDecoration(
+        labelText: widget.labelText,
+        labelStyle: const TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 32, 2, 2)),
+        // focusColor: Colors.white,
+        hintText: widget.hintText,
+        filled: true,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          borderSide: const BorderSide(color: Color.fromARGB(255, 7, 1, 0)),
         ),
+        fillColor: Colors.white,
       ),
     );
   }
