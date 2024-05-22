@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:space_galaxy_shooter/main.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/ui/custom_floating_button/custom_floating_button.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/database/mongo_db.dart';
-import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/menu/menu_screen.dart';
 
 class GameResultsScreen extends ConsumerStatefulWidget {
@@ -19,6 +18,19 @@ class _GameResultsState extends ConsumerState<GameResultsScreen> {
   void _fetchData() async {
     var dbService = DatabaseService();
     var fetchedUsers = await dbService.fetchUsers();
+//@@  sorting function from chat GPT 3.5 START    @@
+    fetchedUsers.sort((a, b) {
+      var scoreA = (a['scores'] as List<dynamic>)
+          .fold(0, (prev, element) => prev > element ? prev : element);
+      var scoreB = (b['scores'] as List<dynamic>)
+          .fold(0, (prev, element) => prev > element ? prev : element);
+      return scoreB.compareTo(scoreA);
+    });
+//@@  sorting function from chat GPT 3.5  END     @@
+
+    if (fetchedUsers.length > 10) {
+      fetchedUsers = fetchedUsers.sublist(0, 10);
+    }
     setState(() {
       _users = fetchedUsers;
     });
