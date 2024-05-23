@@ -95,10 +95,15 @@ class _GameResultsState extends ConsumerState<GameResultsScreen> {
                           title: Text(
                             "User Name: ${user['login']}",
                             style: const TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 16, 3, 131)),
                           ),
                           subtitle: Text(
                             'Scores: ${user['scores']?.join(", ") ?? "No scores"}',
+                            // join(", ") used to display scores without  '[]', just number or value
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ),
                       );

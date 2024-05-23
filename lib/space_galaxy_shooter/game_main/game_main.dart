@@ -47,7 +47,7 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
       GroupRockTypeThree(gameWidth: screenSize.width),
       scoreText,
     ]);
-    debugMode = true;
+    //debugMode = true;
     loopTypeOne.onTick =
         () => add(GroupRockTypeOne(gameWidth: screenSize.width));
     loopTypeTwo.onTick = () => add(GroupRockTypeTwo());

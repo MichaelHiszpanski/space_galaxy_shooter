@@ -58,9 +58,9 @@ class GameOverScreen extends ConsumerWidget {
                 height: 80,
               ),
               Text(
-                scoreEndGame,
+                "Your Score: $scoreEndGame",
                 style: const TextStyle(
-                    fontSize: 60,
+                    fontSize: 38,
                     color: Colors.white,
                     fontWeight: FontWeight.w700),
               ),
@@ -72,7 +72,7 @@ class GameOverScreen extends ConsumerWidget {
                   buttonName: "Play Again !",
                   heroTag: "tag_game_over_screen_restart"),
               const SizedBox(
-                height: 450,
+                height: 400,
               ),
               CustomFloatingButton(
                   onPressed: () => _navigateToMenuScreen(context, ref),

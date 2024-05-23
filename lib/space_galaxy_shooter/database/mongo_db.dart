@@ -6,6 +6,7 @@ class DatabaseService {
   Future<List<dynamic>> fetchUsers() async {
     try {
       final apiResponse = await http.get(Uri.parse('$apiUrl/getAllUsers'));
+      //200 OK -request has succeeded.
       if (apiResponse.statusCode == 200) {
         return json.decode(apiResponse.body);
       } else {
@@ -27,6 +28,8 @@ class DatabaseService {
           'password': password,
         }),
       );
+      //200 OK -request has succeeded.
+      //404 Not Found -This status code indicates that the server cannot find the requested resource
       if (apiResponse.statusCode == 200 || apiResponse.statusCode == 404) {
         return json.decode(apiResponse.body);
       } else {
@@ -48,6 +51,7 @@ class DatabaseService {
           'newScores': newScores,
         }),
       );
+      //200 OK -request has succeeded.
       if (apiResponse.statusCode == 200) {
         return json.decode(apiResponse.body);
       } else {
@@ -68,6 +72,7 @@ class DatabaseService {
           'password': password,
         }),
       );
+      //201 Created -returned when a new resource has been successfully created.
       if (apiResponse.statusCode == 201) {
         return {'success': true, 'message': 'New User was added to MongoDB'};
       } else {

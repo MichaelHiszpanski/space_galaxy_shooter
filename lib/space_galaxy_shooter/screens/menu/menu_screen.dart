@@ -50,14 +50,16 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                         height: 60.0,
                       ),
                       Text(
-                        'Hello, let`s play: ${user['login'] ?? "Guest"}',
+                        'Hello, let`s play:\n ${user['login'] ?? "Guest"}',
+                        textAlign: TextAlign.center,
                         style: const TextStyle(
-                            fontSize: 35,
-                            color: Color.fromARGB(255, 182, 38, 13),
-                            fontWeight: FontWeight.w600),
+                          fontSize: 38,
+                          color: Color.fromARGB(255, 221, 214, 213),
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                       const SizedBox(
-                        height: 50.0,
+                        height: 100.0,
                       ),
                       CustomFloatingButton(
                         onPressed: () => _navigateToPlayGame(context),
@@ -65,7 +67,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                         heroTag: "tag_game_menu_start",
                       ),
                       const SizedBox(
-                        height: 300.0,
+                        height: 330.0,
                       ),
                       CustomFloatingButton(
                         onPressed: () => _navigateToResultsScreen(context),

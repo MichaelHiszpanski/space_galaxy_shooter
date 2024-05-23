@@ -18,7 +18,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   final TextEditingController _userPassword = TextEditingController();
 
   void _loginUser() async {
-    // _navigateToPlayGame(context);
     var dbService = DatabaseService();
     Map<String, dynamic> registerResult = await dbService.addNewUser(
       _userLogin.text,
@@ -45,7 +44,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                 height: screenSize.height,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage("assets/images/login.png"),
+                        image: AssetImage("assets/images/register_screen2.png"),
                         fit: BoxFit.cover)),
                 child: Column(
                   children: [
@@ -60,7 +59,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                           color: Colors.white),
                     ),
                     const SizedBox(
-                      height: 50.0,
+                      height: 80.0,
                     ),
                     OutlinedTextField(
                       labelText: "Login",
@@ -76,7 +75,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       inputvalue: _userPassword,
                     ),
                     const SizedBox(
-                      height: 50.0,
+                      height: 80.0,
                     ),
                     CustomFloatingButton(
                       onPressed: () => _loginUser(),
