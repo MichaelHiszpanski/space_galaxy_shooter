@@ -9,7 +9,7 @@ import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/splash/splash_
 
 final userLoginProvider = StateProvider<Map<String, dynamic>?>((ref) => null);
 final allUsersDataProvider = StateProvider<dynamic>((ref) => null);
-final mobileScreenSize = StateProvider<Size>((ref) => Size.zero);
+final mobileScreenSizeProvider = StateProvider<Size>((ref) => Size.zero);
 void main() {
   runApp(
     const ProviderScope(

@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:math';
 import 'package:flame/components.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game/rock_type_one/rock_type_one.dart';
@@ -34,7 +33,7 @@ class GroupRockTypeOne extends PositionComponent with HasGameRef<GameMain> {
     ]);
   }
 
-  @override //delta
+  @override
   void update(double dt) {
     super.update(dt);
     position.y += Config.gameSpeed * dt;
@@ -42,10 +41,5 @@ class GroupRockTypeOne extends PositionComponent with HasGameRef<GameMain> {
     if (position.y > 700) {
       removeFromParent();
     }
-
-    // if (gameRef.isHit) {
-    //   removeFromParent();
-    //   gameRef.isHit = false;
-    // }
   }
 }

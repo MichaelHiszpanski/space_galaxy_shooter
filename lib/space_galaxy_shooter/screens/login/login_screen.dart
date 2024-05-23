@@ -4,8 +4,6 @@ import 'package:space_galaxy_shooter/main.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/ui/custom_floating_button/custom_floating_button.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/ui/outlined_text_field/outlined_text_field.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/database/mongo_db.dart';
-import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
-import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/game_play/game_play_screen.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/menu/menu_screen.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/user_model/user_model.dart';
 
@@ -21,7 +19,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   final TextEditingController _userPassword = TextEditingController();
 
   void _loginUser() async {
-    // _navigateToPlayGame(context);
     var dbService = DatabaseService();
     Map<String, dynamic> loginResult =
         await dbService.checkUserLoginAndPassword(
@@ -35,7 +32,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         password: loginResult['user']['password'],
         scores: List<int>.from(loginResult['user']['scores']),
       );
-      // ref.read(userLoginProvider.notifier).update((state) => user);
       ref.read(userLoginProvider.notifier).state = loginResult['user'];
       _navigateToMenuScreen(context);
     } else {
@@ -45,7 +41,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = ref.watch(mobileScreenSize);
+    final screenSize = ref.watch(mobileScreenSizeProvider);
     return Scaffold(
       body: SafeArea(
           child: Center(

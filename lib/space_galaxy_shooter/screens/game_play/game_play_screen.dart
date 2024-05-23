@@ -10,7 +10,7 @@ class GamePlayScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final screenSize = ref.watch(mobileScreenSize);
+    final screenSize = ref.watch(mobileScreenSizeProvider);
     final game = GameMain(screenSize: screenSize);
     return Scaffold(
       body: SizedBox(

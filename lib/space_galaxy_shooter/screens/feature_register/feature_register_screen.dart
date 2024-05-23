@@ -4,11 +4,7 @@ import 'package:space_galaxy_shooter/main.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/ui/custom_floating_button/custom_floating_button.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/ui/outlined_text_field/outlined_text_field.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/database/mongo_db.dart';
-import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
-import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/game_play/game_play_screen.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/login/login_screen.dart';
-import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/menu/menu_screen.dart';
-import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/user_model/user_model.dart';
 
 class RegisterScreen extends ConsumerStatefulWidget {
   const RegisterScreen({super.key});
@@ -38,7 +34,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = ref.watch(mobileScreenSize);
+    final screenSize = ref.watch(mobileScreenSizeProvider);
     return Scaffold(
       body: SafeArea(
           child: Center(

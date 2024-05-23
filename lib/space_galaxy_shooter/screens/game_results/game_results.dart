@@ -18,7 +18,7 @@ class _GameResultsState extends ConsumerState<GameResultsScreen> {
   void _fetchData() async {
     var dbService = DatabaseService();
     var fetchedUsers = await dbService.fetchUsers();
-//@@  sorting function from chat GPT 3.5 START    @@
+//@@ START  sorting function from chat GPT 3.5 START    @@
     fetchedUsers.sort((a, b) {
       var scoreA = (a['scores'] as List<dynamic>)
           .fold(0, (prev, element) => prev > element ? prev : element);
@@ -26,7 +26,7 @@ class _GameResultsState extends ConsumerState<GameResultsScreen> {
           .fold(0, (prev, element) => prev > element ? prev : element);
       return scoreB.compareTo(scoreA);
     });
-//@@  sorting function from chat GPT 3.5  END     @@
+//@@  END  sorting function from chat GPT 3.5  END     @@
 
     if (fetchedUsers.length > 10) {
       fetchedUsers = fetchedUsers.sublist(0, 10);
@@ -34,7 +34,8 @@ class _GameResultsState extends ConsumerState<GameResultsScreen> {
     setState(() {
       _users = fetchedUsers;
     });
-    print(" Users: ${fetchedUsers}");
+
+    debugPrint(" Users: ${fetchedUsers}");
   }
 
   @override
@@ -52,7 +53,7 @@ class _GameResultsState extends ConsumerState<GameResultsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = ref.watch(mobileScreenSize);
+    final screenSize = ref.watch(mobileScreenSizeProvider);
     return Scaffold(
       body: SafeArea(
           child: Expanded(

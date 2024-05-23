@@ -37,18 +37,6 @@ class DatabaseService {
     }
   }
 
-  Future<Map<String, dynamic>> loginUser(String login, String password) async {
-    var dbService = DatabaseService();
-    Map<String, dynamic> loginResult =
-        await dbService.checkUserLoginAndPassword(login, password);
-
-    if (loginResult['success']) {
-      return loginResult;
-    } else {
-      return {'success': false, 'message': 'Failing to Login'};
-    }
-  }
-
   Future<Map<String, dynamic>> updateScores(
       String login, List<int> newScores) async {
     try {

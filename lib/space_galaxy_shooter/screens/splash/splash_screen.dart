@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:space_galaxy_shooter/main.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/ui/custom_floating_button/custom_floating_button.dart';
-import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/feature_register/feature_register_screen.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/screens/login/login_screen.dart';
 
@@ -29,8 +28,8 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   Widget build(BuildContext context) {
     final currentMobileScreenSize =
         MediaQuery.of(context).size; //detect mobile screen size
-    ref.read(mobileScreenSize.notifier).state = currentMobileScreenSize;
-    final screenSize = ref.watch(mobileScreenSize);
+    ref.read(mobileScreenSizeProvider.notifier).state = currentMobileScreenSize;
+    final screenSize = ref.watch(mobileScreenSizeProvider);
     return SafeArea(
         child: Expanded(
       child: Column(
