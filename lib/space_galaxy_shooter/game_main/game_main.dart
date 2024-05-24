@@ -17,7 +17,7 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
   late UserShip userShip;
   late int score;
   late TextComponent scoreText;
-  static int remaningTime = 1000;
+  static int remaningTime = 1000; //not used atm
   final Random random = Random();
   Timer loopTypeOne = Timer(Config.intervalRockTypeOne, repeat: true);
   Timer loopTypeTwo = Timer(Config.intervalRockTypeTwo, repeat: true);
@@ -47,7 +47,7 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
       GroupRockTypeThree(gameWidth: screenSize.width),
       scoreText,
     ]);
-    //debugMode = true;
+
     loopTypeOne.onTick =
         () => add(GroupRockTypeOne(gameWidth: screenSize.width));
     loopTypeTwo.onTick = () => add(GroupRockTypeTwo());
@@ -93,6 +93,7 @@ class GameMain extends FlameGame with TapDetector, HasCollisionDetection {
     loopTypeOne.update(dt);
     loopTypeTwo.update(dt);
     loopTypeThree.update(dt);
+    //Not used for survivale mode
     // if (remaningTime > 0) {
     //   remaningTime -= 1;
     // }

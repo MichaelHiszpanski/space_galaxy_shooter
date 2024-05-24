@@ -13,7 +13,7 @@ class BackgroundGame extends ParallaxComponent<GameMain>
   @override
   FutureOr<void> onLoad() async {
     final backgroundGameImage =
-        await Flame.images.load("space.jpg"); //load image
+        await Flame.images.load("back3.jpg"); //load image
     final imageSize = Vector2(screenSize.width,
         screenSize.height); //image size same as game screen szie
     parallax = Parallax([

@@ -21,16 +21,12 @@ class GameOverScreen extends ConsumerWidget {
     final user = ref.read(userLoginProvider);
     String userLogin = user?['login'];
     List<int> scores = List<int>.from(user?['scores']);
-    print("Users data ${userLogin}");
+    print("Users data ${scores[0]}");
     print("Users data ${endScore}");
-    for (int i = 0; i < scores.length; i++) {
-      if (endScore > scores[i]) {
-        scores[i] = endScore;
-        shouldUpdate = true;
-        break;
-      }
+    if (endScore > scores[0]) {
+      scores[0] = endScore;
+      shouldUpdate = true;
     }
-
     if (shouldUpdate) {
       await dbService.updateScores(userLogin, scores);
       ref.read(userLoginProvider.notifier).state = {
