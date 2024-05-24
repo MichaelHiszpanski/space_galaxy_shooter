@@ -37,55 +37,51 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     return Scaffold(
       body: SafeArea(
           child: Center(
-        child: Column(
-          children: [
-            Container(
-                width: screenSize.width,
-                height: screenSize.height,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/register_screen2.png"),
-                        fit: BoxFit.cover)),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 200.0,
-                    ),
-                    const Text(
-                      'Register Account',
-                      style: TextStyle(
-                          fontSize: 50,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                    const SizedBox(
-                      height: 80.0,
-                    ),
-                    OutlinedTextField(
-                      labelText: "Login",
-                      hintText: "Enter login details",
-                      inputvalue: _userLogin,
-                    ),
-                    const SizedBox(
-                      height: 50.0,
-                    ),
-                    OutlinedTextField(
-                      labelText: "Password",
-                      hintText: "Enter password coretly",
-                      inputvalue: _userPassword,
-                    ),
-                    const SizedBox(
-                      height: 80.0,
-                    ),
-                    CustomFloatingButton(
-                      onPressed: () => _loginUser(),
-                      buttonName: "Register",
-                      heroTag: "tag_register_screen",
-                    )
-                  ],
-                ))
-          ],
-        ),
+        child: Container(
+            width: screenSize.width,
+            height: screenSize.height,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/register_screen2.png"),
+                    fit: BoxFit.cover)),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 200.0,
+                ),
+                const Text(
+                  'Register Account',
+                  style: TextStyle(
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                const SizedBox(
+                  height: 80.0,
+                ),
+                OutlinedTextField(
+                  labelText: "Login",
+                  hintText: "Enter login details",
+                  inputvalue: _userLogin,
+                ),
+                const SizedBox(
+                  height: 50.0,
+                ),
+                OutlinedTextField(
+                  labelText: "Password",
+                  hintText: "Enter password coretly",
+                  inputvalue: _userPassword,
+                ),
+                const SizedBox(
+                  height: 80.0,
+                ),
+                CustomFloatingButton(
+                  onPressed: () => _loginUser(),
+                  buttonName: "Register",
+                  heroTag: "tag_register_screen",
+                )
+              ],
+            )),
       )),
     );
   }

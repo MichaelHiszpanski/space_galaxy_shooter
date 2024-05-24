@@ -57,70 +57,69 @@ class _GameResultsState extends ConsumerState<GameResultsScreen> {
     return Scaffold(
       body: SafeArea(
           child: Expanded(
-        child: Column(
-          children: [
-            Container(
-              width: screenSize.width,
-              height: screenSize.height,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/results_screen.png"),
-                      fit: BoxFit.cover)),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 150.0,
-                  ),
-                  Expanded(
-                      child: ListView.builder(
-                    itemCount: _users.length,
-                    itemBuilder: (context, index) {
-                      var user = _users[index];
-                      return Container(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 16.0, vertical: 8.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: ListTile(
-                          title: Text(
-                            "User Name: ${user['login']}",
-                            style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 16, 3, 131)),
-                          ),
-                          subtitle: Text(
-                            'Scores: ${user['scores']?.join(", ") ?? "No scores"}',
-                            // join(", ") used to display scores without  '[]', just number or value
-                            style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      );
-                    },
-                  )),
-                  CustomFloatingButton(
-                    onPressed: () => _navigateToMenuScreen(context),
-                    buttonName: "Back to Menu",
-                    heroTag: "tag_game_results",
-                  ),
-                  const SizedBox(
-                    height: 100.0,
-                  ),
-                ],
+        child: Container(
+          width: screenSize.width,
+          height: screenSize.height,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/results_screen.png"),
+                  fit: BoxFit.cover)),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 150.0,
               ),
-            )
-          ],
+              Expanded(
+                  child: ListView.builder(
+                itemCount: _users.length,
+                itemBuilder: (context, index) {
+                  var user = _users[index];
+                  return Container(
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 8.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: ListTile(
+                      title: Text(
+                        "User Name: ${user['login']}",
+                        style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 16, 3, 131)),
+                      ),
+                      subtitle: Text(
+                        'Scores: ${user['scores']?.join(", ") ?? "No scores"}',
+                        // join(", ") used to display scores without  '[]', just number or value
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  );
+                },
+              )),
+              const SizedBox(
+                height: 20.0,
+              ),
+              CustomFloatingButton(
+                onPressed: () => _navigateToMenuScreen(context),
+                buttonName: "Back to Menu",
+                heroTag: "tag_game_results",
+              ),
+              const SizedBox(
+                height: 100.0,
+              ),
+            ],
+          ),
         ),
       )),
     );

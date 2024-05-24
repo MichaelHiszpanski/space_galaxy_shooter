@@ -37,12 +37,13 @@ class GameOverScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final screenSize = ref.watch(mobileScreenSizeProvider);
     return Material(
       color: Colors.black38,
       child: Center(
         child: Container(
-          width: 800,
-          height: 800,
+          width: screenSize.width,
+          height: screenSize.height,
           decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/gameover.png"),

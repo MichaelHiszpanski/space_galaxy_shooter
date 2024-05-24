@@ -30,41 +30,37 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
         MediaQuery.of(context).size; //detect mobile screen size
     ref.read(mobileScreenSizeProvider.notifier).state = currentMobileScreenSize;
     final screenSize = ref.watch(mobileScreenSizeProvider);
-    return SafeArea(
-        child: Expanded(
-      child: Column(
-        children: [
-          Container(
-            width: screenSize.width,
-            height: screenSize.height,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/images/splash.png"),
-                    fit: BoxFit.cover)),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 500.0,
-                ),
-                if (isLoginViewVisible)
-                  CustomFloatingButton(
-                    onPressed: () => _navigateToLoginScreen(context),
-                    buttonName: "Login",
-                    heroTag: "tag_spalsh_screen_login",
-                  ),
-                const SizedBox(
-                  height: 50.0,
-                ),
-                if (isLoginViewVisible)
-                  CustomFloatingButton(
-                    onPressed: () => _navigateToRegisterScreen(context),
-                    buttonName: "Register",
-                    heroTag: "tag_spalsh_screen_register",
-                  )
-              ],
+    return Scaffold(
+        body: SafeArea(
+      child: Container(
+        width: screenSize.width,
+        height: screenSize.height,
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/splash.png"),
+                fit: BoxFit.cover)),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 450.0,
             ),
-          )
-        ],
+            if (isLoginViewVisible)
+              CustomFloatingButton(
+                onPressed: () => _navigateToLoginScreen(context),
+                buttonName: "Login",
+                heroTag: "tag_spalsh_screen_login",
+              ),
+            const SizedBox(
+              height: 50.0,
+            ),
+            if (isLoginViewVisible)
+              CustomFloatingButton(
+                onPressed: () => _navigateToRegisterScreen(context),
+                buttonName: "Register",
+                heroTag: "tag_spalsh_screen_register",
+              )
+          ],
+        ),
       ),
     ));
   }

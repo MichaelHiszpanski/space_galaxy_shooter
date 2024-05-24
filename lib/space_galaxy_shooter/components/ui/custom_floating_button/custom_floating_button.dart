@@ -24,7 +24,7 @@ class _CustomFloatingButtonState extends State<CustomFloatingButton> {
       onPressed: widget.onPressed,
       label: Container(
         alignment: Alignment.center,
-        height: 300.0,
+        height: 50.0,
         width: 300.0,
         child: Text(
           widget.buttonName,
