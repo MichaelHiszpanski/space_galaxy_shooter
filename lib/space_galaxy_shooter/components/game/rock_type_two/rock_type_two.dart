@@ -2,6 +2,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/components/game/user_ship_ammo/user_ship_ammo.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/game_main/game_main.dart';
+import 'package:space_galaxy_shooter/space_galaxy_shooter/game_utils/game_config/game_configuration.dart';
 import 'package:space_galaxy_shooter/space_galaxy_shooter/interfaces/rock_type_two_position/rock_type_two_position.dart';
 import 'package:flame/flame.dart';
 
@@ -18,7 +19,7 @@ class RockTypeTwo extends SpriteComponent
   Future<void> onLoad() async {
     final rock = await Flame.images.load("rock_type_two.png");
     size = Vector2(wight, height);
-    rockLife = 5;
+    rockLife = Config.rockTypeTwoLife;
     position = Vector2(50, 0);
     switch (rockPosition) {
       case RockTypeTwoPosition.left:

@@ -6,4 +6,6 @@ class Config {
   static const rockTypeOneSize = 40.0;
   static const rockTypeTwoSize = 80.0;
   static const rockTypeThreeSize = 160.0;
+  static const rockTypeTwoLife = 5;
+  static const rockTypeThreeLife = 10;
 }
